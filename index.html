@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nostalgia Fouls — A Documentary Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4efe4;
+    --paper-2:#ece4d3;
+    --ink:#161310;
+    --ink-soft:#3a342d;
+    --leather:#bb4318;
+    --leather-deep:#8a2f0f;
+    --line:#161310;
+    --gold:#9a7b34;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:19px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+  /* paper grain */
+  body::before{
+    content:"";
+    position:fixed;inset:0;pointer-events:none;z-index:999;
+    opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- MASTHEAD ---------- */
+  header.mast{
+    border-bottom:3px solid var(--line);
+    padding:26px 0 14px;
+  }
+  .mast-top{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    font-family:"Archivo",sans-serif;
+    text-transform:uppercase;letter-spacing:.28em;
+    font-size:11px;font-weight:600;color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;margin-bottom:14px;
+    flex-wrap:wrap;gap:8px;
+  }
+  .mast-name{
+    font-family:"Fraunces",serif;
+    font-weight:900;
+    font-size:clamp(34px,6vw,62px);
+    letter-spacing:-.02em;
+    line-height:.95;
+    text-align:center;
+    text-transform:uppercase;
+  }
+  .mast-name span{color:var(--leather);}
+  .mast-sub{
+    text-align:center;
+    font-family:"Archivo",sans-serif;
+    text-transform:uppercase;letter-spacing:.4em;
+    font-size:11px;font-weight:600;color:var(--ink-soft);
+    margin-top:12px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 40px;
+    border-bottom:3px double var(--line);
+    position:relative;
+  }
+  .eyebrow{
+    font-family:"Archivo",sans-serif;
+    text-transform:uppercase;letter-spacing:.34em;
+    font-size:12px;font-weight:700;color:var(--leather-deep);
+    display:flex;align-items:center;gap:14px;margin-bottom:22px;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line);opacity:.4;}
+  h1.title{
+    font-family:"Fraunces",serif;
+    font-weight:900;
+    font-size:clamp(46px,9vw,108px);
+    line-height:.9;
+    letter-spacing:-.025em;
+    text-wrap:balance;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--leather);
+    display:block;
+    font-size:.42em;
+    letter-spacing:0;
+    margin-top:18px;
+    line-height:1.1;
+  }
+  .dek{
+    margin-top:30px;
+    font-size:clamp(20px,2.4vw,27px);
+    line-height:1.5;
+    max-width:760px;
+    font-weight:300;
+    color:var(--ink-soft);
+  }
+  .dek strong{font-weight:600;color:var(--ink);}
+  .hero-byline{
+    margin-top:26px;
+    font-family:"Archivo",sans-serif;
+    text-transform:uppercase;letter-spacing:.18em;
+    font-size:13px;font-weight:500;color:var(--ink-soft);
+  }
+  .hero-byline strong{color:var(--leather-deep);font-weight:700;letter-spacing:.1em;}
+
+  /* ---------- BODY GRID ---------- */
+  article{padding:54px 0 20px;}
+  .lead{
+    column-count:2;column-gap:46px;
+    margin-bottom:46px;
+  }
+  @media(max-width:760px){.lead{column-count:1;}}
+  .lead p{margin-bottom:18px;text-align:justify;hyphens:auto;}
+  .lead p:first-child::first-letter{
+    font-family:"Fraunces",serif;
+    font-weight:900;
+    float:left;
+    font-size:88px;
+    line-height:.72;
+    padding:8px 12px 0 0;
+    color:var(--leather);
+  }
+
+  .section{
+    max-width:780px;margin:0 auto;
+  }
+  .kicker{
+    font-family:"Archivo",sans-serif;
+    text-transform:uppercase;letter-spacing:.3em;
+    font-size:12px;font-weight:700;color:var(--leather-deep);
+    margin:54px 0 10px;
+  }
+  h2{
+    font-family:"Fraunces",serif;
+    font-weight:800;
+    font-size:clamp(28px,4.6vw,46px);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    margin-bottom:24px;
+    text-wrap:balance;
+  }
+  .section p{margin-bottom:20px;}
+  .section p strong{font-weight:600;}
+
+  /* pull quote */
+  .pull{
+    margin:48px auto;
+    max-width:880px;
+    border-top:3px solid var(--line);
+    border-bottom:3px solid var(--line);
+    padding:36px 10px;
+    text-align:center;
+  }
+  .pull blockquote{
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(26px,4.4vw,44px);
+    line-height:1.18;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+  }
+  .pull blockquote span{color:var(--leather);}
+
+  /* expect block */
+  .expect{
+    background:var(--ink);
+    color:var(--paper);
+    margin:56px 0;
+    padding:54px 6%;
+    position:relative;
+  }
+  .expect::before{
+    content:"";position:absolute;inset:14px;
+    border:1px solid rgba(244,239,228,.22);pointer-events:none;
+  }
+  .expect .kicker{color:var(--leather);margin-top:0;}
+  .expect h2{color:var(--paper);}
+  .expect-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:32px 40px;margin-top:12px;
+  }
+  @media(max-width:680px){.expect-grid{grid-template-columns:1fr;}}
+  .expect-grid .item{border-top:1px solid rgba(244,239,228,.3);padding-top:16px;}
+  .expect-grid .item h3{
+    font-family:"Fraunces",serif;font-weight:700;
+    font-size:22px;margin-bottom:8px;color:var(--paper);
+  }
+  .expect-grid .item p{font-size:17px;line-height:1.6;color:#d8cfbe;margin:0;}
+
+  /* closing */
+  .closing{
+    max-width:820px;margin:60px auto 0;text-align:center;
+  }
+  .closing .verdict{
+    font-family:"Fraunces",serif;
+    font-weight:800;
+    font-style:italic;
+    font-size:clamp(26px,4.4vw,40px);
+    line-height:1.25;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+  }
+  .closing .verdict span{color:var(--leather);font-style:normal;}
+
+  /* ---------- BILLING / CREDITS ---------- */
+  .credits{
+    border-top:3px solid var(--line);
+    margin-top:70px;
+    padding:54px 0 80px;
+    text-align:center;
+  }
+  .filmtitle{
+    font-family:"Fraunces",serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:clamp(26px,5vw,52px);
+    line-height:.95;
+    letter-spacing:-.01em;
+  }
+  .filmtitle em{display:block;font-style:italic;font-weight:400;font-size:.4em;color:var(--leather);letter-spacing:.02em;margin-top:14px;text-transform:none;}
+  .billing{
+    margin-top:40px;
+    display:flex;flex-direction:column;gap:26px;align-items:center;
+  }
+  .bill-row .label{
+    font-family:"Archivo",sans-serif;
+    text-transform:uppercase;letter-spacing:.36em;
+    font-size:10px;font-weight:700;color:var(--ink-soft);
+    display:block;margin-bottom:7px;
+  }
+  .bill-row .value{
+    font-family:"Fraunces",serif;font-weight:700;
+    font-size:clamp(20px,3vw,28px);letter-spacing:.01em;
+  }
+  .rule-orn{
+    margin:38px auto 0;width:60px;height:2px;background:var(--leather);
+    position:relative;
+  }
+  .rule-orn::before,.rule-orn::after{
+    content:"";position:absolute;top:50%;width:6px;height:6px;
+    background:var(--leather);border-radius:50%;transform:translateY(-50%);
+  }
+  .rule-orn::before{left:-16px;}
+  .rule-orn::after{right:-16px;}
+  footer.fine{
+    font-family:"Archivo",sans-serif;text-transform:uppercase;
+    letter-spacing:.28em;font-size:10px;color:var(--ink-soft);
+    margin-top:30px;
+  }
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- TOP BANNER -->
+  <div class="topbanner">
+    <span class="tb-company">Diaspora Echo</span>
+    <span class="tb-creator">Created by Anthony Durham</span>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="mast">
+    <div class="mast-top">
+      <span>The Documentary Preview</span>
+      <span>A Diaspora Echo Film</span>
+      <span>Vol. I</span>
+    </div>
+    <div class="mast-name">The Hard<span>·</span>wood Files</div>
+    <div class="mast-sub">An Examination of How We Watch the Game</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">First Look — Feature Documentary</div>
+    <h1 class="title">Nostalgia Fouls<em>The Bias Against Today&rsquo;s NBA</em></h1>
+    <p class="dek">A documentary about the stories we tell ourselves about basketball &mdash; and how <strong>bias, nostalgia, and social media</strong> quietly rewrite which era we&rsquo;re allowed to love.</p>
+    <p class="hero-byline">Created by <strong>Anthony Durham</strong> &nbsp;·&nbsp; A <strong>Diaspora Echo</strong> Presentation</p>
+  </section>
+
+  <!-- ARTICLE -->
+  <article>
+    <div class="lead reveal">
+      <p>Scroll through any feed during an NBA season and the verdict arrives before the final buzzer: the game is soft, the players flop, the league is ruined, and nothing today could survive a single possession against the giants of the past. The complaint has hardened into common sense. It is repeated so often, by so many, that it no longer feels like opinion. It feels like memory.</p>
+      <p>But memory is exactly the problem. <em>Nostalgia Fouls</em> is a feature documentary that turns the camera away from the court and toward the crowd &mdash; toward the way modern fans criticize the game they claim to love. It argues that the loudest argument in basketball is not really about basketball at all. It is about how we remember, who we trust to tell us the truth, and what the algorithm rewards us for believing.</p>
+      <p>This is not a film built to defend every dunk and every whistle of the current league. It is built to ask a harder question: if today&rsquo;s NBA is on trial, why is the past never asked to take the stand?</p>
+    </div>
+
+    <div class="section">
+      <div class="kicker reveal">The Premise</div>
+      <h2 class="reveal">Every era was flawed. Only one gets remembered honestly.</h2>
+      <p class="reveal">The film opens with the familiar charge sheet against the modern game &mdash; too many threes, too much flopping, not enough toughness, not enough rivalry, not enough soul. These criticisms are presented in full, without mockery, because millions of fans genuinely believe them. The documentary takes that belief seriously enough to test it.</p>
+      <p class="reveal">Then it does something the debate shows rarely do. It goes back and watches the 1990s honestly. Not the highlight reels. The full games.</p>
+    </div>
+
+    <div class="pull reveal">
+      <blockquote>We don&rsquo;t remember the 90s. <span>We remember the best four minutes of it.</span></blockquote>
+    </div>
+
+    <div class="section">
+      <div class="kicker reveal">The Case Against Forgetting</div>
+      <h2 class="reveal">The decade we worship was slower, rougher, and lower-scoring than we admit.</h2>
+      <p class="reveal">The legends of the 1990s earned their place, and <em>Nostalgia Fouls</em> never disputes their greatness. But greatness and entertainment are not the same thing, and the film makes the distinction plainly. Stretches of 90s basketball were grinding, physical, and slow &mdash; hand-checking that strangled creativity, possessions that bled the shot clock dry, and final scores that dipped into the 70s and 80s on nights when offense simply could not breathe.</p>
+      <p class="reveal">There were brilliant nights and there were genuinely boring ones. There was beautiful toughness and there was clutching, grabbing, and ugliness dressed up as defense. The point is not that the past was bad. The point is that the past was <strong>uneven</strong> &mdash; the same way every era is uneven &mdash; and that our affection for its stars has quietly become permission to forget its flaws.</p>
+      <p class="reveal">Love for a player, the film suggests, becomes a kind of bias. We protect what we grew up on. We grade it on a curve we would never extend to the present.</p>
+    </div>
+
+    <div class="section">
+      <div class="kicker reveal">The Amplifier</div>
+      <h2 class="reveal">Fans always complained. They just never had a megaphone this loud.</h2>
+      <p class="reveal">The most important character in this documentary is not a player. It is the platform. <em>Nostalgia Fouls</em> traces how the act of criticizing the NBA has been transformed by the machinery that now surrounds it &mdash; Facebook, Twitter and X, Instagram, TikTok, podcasts, and the endless churn of televised debate.</p>
+      <p class="reveal">In the 90s, frustrated fans complained too. They argued in living rooms, at bars, on the radio, in the back pages of the newspaper. But those complaints stayed small. They had nowhere to travel. Today a single flopping clip, one ugly loss, one bad call, can be cut, captioned, and fired across the world in minutes &mdash; and within hours it stops being one moment and becomes the proof that the entire league is broken.</p>
+      <p class="reveal">The film shows how outrage is not just expressed online; it is <strong>rewarded</strong> there. The hottest take wins the engagement. The angriest clip travels furthest. Nuance does not trend. And so the most extreme version of every opinion becomes the loudest, until the consensus around us was never really a consensus at all &mdash; just whatever the algorithm decided to amplify.</p>
+    </div>
+
+    <div class="pull reveal">
+      <blockquote>One clip is not a verdict. <span>But online, it always becomes one.</span></blockquote>
+    </div>
+
+    <!-- WHAT TO EXPECT -->
+    <div class="expect reveal">
+      <div class="kicker">What Viewers Can Expect</div>
+      <h2>A reckoning with how we watch.</h2>
+      <div class="expect-grid">
+        <div class="item">
+          <h3>The Footage, Unfiltered</h3>
+          <p>Full-game film from across eras &mdash; not highlight packages &mdash; placed side by side so viewers can judge pace, scoring, and physicality with their own eyes.</p>
+        </div>
+        <div class="item">
+          <h3>The Voices</h3>
+          <p>Fans, analysts, historians, and former players reckoning honestly with what nostalgia adds and what it conveniently leaves out.</p>
+        </div>
+        <div class="item">
+          <h3>The Machinery</h3>
+          <p>A clear-eyed look at how social platforms, podcasts, and debate shows manufacture and accelerate the narratives we mistake for truth.</p>
+        </div>
+        <div class="item">
+          <h3>The Mirror</h3>
+          <p>An invitation, not a lecture &mdash; a chance for every viewer to ask whether they are remembering the game, or simply defending their youth.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <div class="closing">
+      <div class="kicker reveal" style="text-align:center;">The Thesis</div>
+      <p class="verdict reveal">The past was not perfect, the present is not broken, and the only thing fans truly owe the game is the honesty to admit <span>both can be true at once.</span></p>
+    </div>
+  </article>
+</div>
+
+<!-- CREDITS / BILLING -->
+<div class="credits">
+  <div class="wrap">
+    <div class="filmtitle reveal">Nostalgia Fouls<em>The Bias Against Today&rsquo;s NBA</em></div>
+    <div class="billing reveal">
+      <div class="bill-row">
+        <span class="label">Presented By</span>
+        <span class="value">Diaspora Echo</span>
+      </div>
+      <div class="bill-row">
+        <span class="label">Created By</span>
+        <span class="value">Anthony Durham</span>
+      </div>
+    </div>
+    <div class="rule-orn"></div>
+    <footer class="fine">A Feature Documentary · Sport · Memory · Media</footer>
+  </div>
+</div>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(Math.min(i,6)*40)+'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
